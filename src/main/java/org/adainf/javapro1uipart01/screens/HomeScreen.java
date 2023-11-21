@@ -3,12 +3,13 @@ package org.adainf.javapro1uipart01.screens;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Hyperlink;
-import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
 public class HomeScreen {
@@ -18,12 +19,17 @@ public class HomeScreen {
     public HomeScreen() {
         GridPane container = new GridPane();
         homeScene = new Scene(container);
+        FlowPane CategoryPane = new FlowPane();
         GridPane Filmgrid = new GridPane();
+
+        //Var
+        int width = 125;
 
         //Box
         HBox Title = new HBox();
         HBox Searchbar = new HBox();
-        VBox Sidebar = new VBox();
+        VBox Sidebar = new VBox(15);
+        HBox Category = new HBox();
 
         VBox Film1 = new VBox();
         VBox Film2 = new VBox();
@@ -37,25 +43,42 @@ public class HomeScreen {
         //Content
         Text Txt = new Text("INF CINEMA");
 
-        TextField Search = new TextField();
+        Label Search = new Label("Search for films...");
 
-        Hyperlink options[] = new Hyperlink[]{
-            new Hyperlink ("New Releases"),
-            new Hyperlink ("Trending"),
-            new Hyperlink ("Coming Soon"),
-            new Hyperlink ("Favourites"),
-            new Hyperlink ("Watch Later")
-        };
+        Label S1 = new Label("New Releases");
+        Label S2 = new Label("Trending");
+        Label S3 = new Label("Coming Soon");
+        Label S4 = new Label("Favourites");
+        Label S5 = new Label("Watch Later");
+
+        Text Cat = new Text("Christmas Films");
+
+        //Rectangle
+        Rectangle[] R = new Rectangle[8];
+        for (int i = 0; i < 8; i++) {
+            R[i] = new Rectangle(width, 175);
+            R[i].setFill(Color.LIGHTGREY);
+        }
 
         //Films
-        Text F1 = new Text("INF CINEMA");
-        Text F2 = new Text("INF CINEMA");
-        Text F3 = new Text("INF CINEMA");
-        Text F4 = new Text("INF CINEMA");
-        Text F5 = new Text("INF CINEMA");
-        Text F6 = new Text("INF CINEMA");
-        Text F7 = new Text("INF CINEMA");
-        Text F8 = new Text("INF CINEMA");
+        Label T1 = new Label("The Night Before Christmas");
+        Label T2 = new Label("How The Grinch Stole Christmas");
+        Label T3 = new Label("National Lampoon's Christmas Vacation");
+        Label T4 = new Label("A Christmas Story");
+        Label T5 = new Label("A Christmas Carol");
+        Label T6 = new Label("Office Christmas Party");
+        Label T7 = new Label("Last Christmas");
+        Label T8 = new Label("The Christmas Chronicles");
+
+        //Year
+        Label Y1 = new Label("1993");
+        Label Y2 = new Label("2000");
+        Label Y3 = new Label("1989");
+        Label Y4 = new Label("1983");
+        Label Y5 = new Label("2009");
+        Label Y6 = new Label("2016");
+        Label Y7 = new Label("2019");
+        Label Y8 = new Label("2018");
 
         //Filmgrid
         Filmgrid.add(Film1, 0, 0);
@@ -67,33 +90,87 @@ public class HomeScreen {
         Filmgrid.add(Film7, 0, 1);
         Filmgrid.add(Film8, 1, 1);
 
-        //
-        Film1.getChildren().add(F1);
-        Film2.getChildren().add(F2);
-        Film3.getChildren().add(F3);
-        Film4.getChildren().add(F4);
-        Film5.getChildren().add(F5);
-        Film6.getChildren().add(F6);
-        Film7.getChildren().add(F7);
-        Film8.getChildren().add(F8);
-        //
+        //Films
+        Category.getChildren().add(Cat);
+        Film1.getChildren().addAll(R[0], T1, Y1);
+        Film2.getChildren().addAll(R[1], T2, Y2);
+        Film3.getChildren().addAll(R[2], T3, Y3);
+        Film4.getChildren().addAll(R[3], T4, Y4);
+        Film5.getChildren().addAll(R[4], T5, Y5);
+        Film6.getChildren().addAll(R[5], T6, Y6);
+        Film7.getChildren().addAll(R[6], T7, Y7);
+        Film8.getChildren().addAll(R[7], T8, Y8);
 
         //Grid
         container.add(Title, 0, 0);
         container.add(Searchbar, 1, 0);
         container.add(Sidebar, 0, 1);
+        container.add(CategoryPane, 1, 1);
         container.add(Filmgrid, 1, 1);
 
-        //Set
-        Title.setAlignment(Pos.CENTER);
+        //Set Height/Width
+        Title.setMinHeight(30);
+        Title.setPrefWidth(150);
 
-        Search.setPromptText("Search for films...");
-        Search.setPrefHeight(30);
+        Search.setMinHeight(30);
         Search.setPrefWidth(1040);
-        Search.setStyle("-fx-background-radius: 0;");
 
         Sidebar.setPrefHeight(605);
         Sidebar.setPrefWidth(150);
+
+        Filmgrid.setPrefWidth(1040);
+
+        T1.setPrefWidth(width);
+        T2.setPrefWidth(width);
+        T3.setPrefWidth(width);
+        T4.setPrefWidth(width);
+        T5.setPrefWidth(width);
+        T6.setPrefWidth(width);
+        T7.setPrefWidth(width);
+        T8.setPrefWidth(width);
+
+        //Position
+        Title.setAlignment(Pos.CENTER);
+        Searchbar.setAlignment(Pos.CENTER_LEFT);
+
+        //Set Wrap
+        T1.setWrapText(true);
+        T2.setWrapText(true);
+        T3.setWrapText(true);
+        T4.setWrapText(true);
+        T5.setWrapText(true);
+        T6.setWrapText(true);
+        T7.setWrapText(true);
+        T8.setWrapText(true);
+
+        //Set font
+        Font font = Font.font("Verdana", FontWeight.BOLD, FontPosture.REGULAR, 10);
+        T1.setFont(font);
+        T2.setFont(font);
+        T3.setFont(font);
+        T4.setFont(font);
+        T5.setFont(font);
+        T6.setFont(font);
+        T7.setFont(font);
+        T8.setFont(font);
+
+        Font font1 = Font.font("Verdana", FontWeight.BOLD, FontPosture.REGULAR, 16);
+        Cat.setFont(font1);
+
+        //Padding
+        Sidebar.setPadding(new Insets(30, 0, 0, 10));
+        CategoryPane.setPadding(new Insets(30, 10, 10, 25));
+        Filmgrid.setPadding(new Insets(80, 10, 10, 25));
+        Searchbar.setPadding(new Insets(0, 0, 0, 25));
+
+        T1.setPadding(new Insets(10, 0, 0, 0));
+        T2.setPadding(new Insets(10, 0, 0, 0));
+        T3.setPadding(new Insets(10, 0, 0, 0));
+        T4.setPadding(new Insets(10, 0, 0, 0));
+        T5.setPadding(new Insets(10, 0, 0, 0));
+        T6.setPadding(new Insets(10, 0, 0, 0));
+        T7.setPadding(new Insets(10, 0, 0, 0));
+        T8.setPadding(new Insets(10, 0, 0, 0));
 
         //Filmgrid spaces
         for (int i = 0; i < 6; i++) {
@@ -102,37 +179,28 @@ public class HomeScreen {
             Filmgrid.getColumnConstraints().add(columnConstraints);
         }
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 2; i++) {
             RowConstraints rowConstraints = new RowConstraints();
-            rowConstraints.setPercentHeight(100.0 / 3);
+            rowConstraints.setPercentHeight(100.0 / 2);
             Filmgrid.getRowConstraints().add(rowConstraints);
         }
 
-//        Film1.setPrefWidth(170);
-//        Film2.setPrefWidth(170);
-//        Film3.setPrefWidth(170);
-//        Film4.setPrefWidth(170);
-//        Film5.setPrefWidth(170);
-//        Film6.setPrefWidth(170);
-//        Film7.setPrefWidth(170);
-//        Film8.setPrefWidth(170);
-
         //Borders
         Title.setBorder(new Border(new BorderStroke(Color.BLACK, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
-        Search.setBorder(new Border(new BorderStroke(Color.BLACK, Color.BLACK, Color.BLACK, Color.BLACK, BorderStrokeStyle.SOLID, BorderStrokeStyle.SOLID, BorderStrokeStyle.SOLID, BorderStrokeStyle.SOLID, null, null, Insets.EMPTY)));
+        Searchbar.setBorder(new Border(new BorderStroke(Color.BLACK, Color.BLACK, Color.BLACK, Color.BLACK, BorderStrokeStyle.SOLID, BorderStrokeStyle.SOLID, BorderStrokeStyle.SOLID, BorderStrokeStyle.SOLID, null, null, Insets.EMPTY)));
         Sidebar.setBorder(new Border(new BorderStroke(Color.BLACK, Color.BLACK, Color.BLACK, Color.BLACK, BorderStrokeStyle.NONE, BorderStrokeStyle.SOLID, BorderStrokeStyle.SOLID, BorderStrokeStyle.SOLID, null, null, Insets.EMPTY)));
 
         //Add
         Title.getChildren().addAll(Txt);
         Searchbar.getChildren().addAll(Search);
-        Sidebar.getChildren().addAll(options);
-//        Film.getChildren().addAll(testt);
-//        container.getChildren().addAll(Title, Search, Side, Film);
+        Sidebar.getChildren().addAll(S1, S2, S3, S4, S5);
+        CategoryPane.getChildren().add(Category);
     }
 
     public Scene getHomeScene() {
         return homeScene;
     }
+
 
 
 }

@@ -1,7 +1,6 @@
 package org.adainf.javapro1uipart01;
-
-import javafx.stage.Stage;
 import org.adainf.javapro1uipart01.screens.HomeScreen;
+import javafx.stage.Stage;
 
 public class Application extends javafx.application.Application {
 
